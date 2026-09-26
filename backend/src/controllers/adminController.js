@@ -153,11 +153,10 @@ async function deleteProduct(req, res) {
   res.json({ ok: true });
 }
 
-// Ombor: optom komplekt qoldig'i va dona razmer qoldiqlari (bir-biriga ta'sir qilmaydi)
+// Ombor: razmer bo'yicha qoldiqlar
 async function updateStock(req, res) {
   const b = req.body || {};
   const data = {};
-  if ('stockPacks' in b) data.stockPacks = b.stockPacks === null || b.stockPacks === '' ? null : Math.max(0, Math.floor(Number(b.stockPacks) || 0));
   if ('stockPairs' in b) {
     if (b.stockPairs === null) data.stockPairs = null;
     else {

@@ -31,8 +31,6 @@ async function getConfig(_req, res) {
     tags: cfg.tags,
     units: cfg.units,
     regions: cfg.regions,
-    retailEnabled: s.retailEnabled !== 'false',
-    wholesaleEnabled: s.wholesaleEnabled !== 'false',
     payments: {
       cash: true,
       // Click merchant ulanmagan bo'lsa ham ko'rinadi — karta + chek jarayoni ishlaydi (karta bo'lsa)

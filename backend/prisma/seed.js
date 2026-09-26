@@ -18,11 +18,11 @@ const CATALOG = [path.join(__dirname, 'katalog.json'), path.join(__dirname, '..'
 
 // ⚠️ NAMUNAVIY NARXLAR — katalogda narx yo'q edi. Admin paneldan o'zgartiring!
 const DEFAULT_PRICES = {
-  oyoq_kiyim: { price: 350000, wholesalePrice: 310000 },
-  futbolka_polo: { price: 150000, wholesalePrice: 130000 },
-  koylak: { price: 220000, wholesalePrice: 190000 },
-  komplekt: { price: 650000, wholesalePrice: 580000 },
-  kurtka: { price: 550000, wholesalePrice: 490000 },
+  oyoq_kiyim: { price: 350000 },
+  futbolka_polo: { price: 150000 },
+  koylak: { price: 220000 },
+  komplekt: { price: 650000 },
+  kurtka: { price: 550000 },
 };
 
 // Ruscha nomlar
@@ -122,7 +122,7 @@ async function main() {
       console.warn('Kategoriya topilmadi:', m.kategoriya);
       continue;
     }
-    const prices = DEFAULT_PRICES[m.kategoriya] || { price: 200000, wholesalePrice: null };
+    const prices = DEFAULT_PRICES[m.kategoriya] || { price: 200000 };
     const article = `BR-${String(m.id).padStart(3, '0')}`;
     const image = '/uploads/products/' + path.basename(m.rasm);
     const color = detectColor(m.nomi);
@@ -138,8 +138,6 @@ async function main() {
       imageFrames: [{ zoom: 1, x: 50, y: 50 }],
       imageColors: [color],
       price: typeof m.narx === 'number' && m.narx > 0 ? m.narx : prices.price,
-      wholesalePrice: prices.wholesalePrice,
-      wholesaleMin: 1,
       sizes: cat.sizes,
       unit: cat.unit,
       instagram: m.instagram || null,

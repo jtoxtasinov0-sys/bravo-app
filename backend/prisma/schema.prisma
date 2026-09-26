@@ -44,13 +44,10 @@ model Product {
   imageColors    Json? // har rasm uchun: { name, hex } yoki null
   price          Int // dona narx (so'm)
   oldPrice       Int? // chizilgan eski narx
-  wholesalePrice Int? // optom narx (1 dona/juft uchun)
-  wholesaleMin   Int      @default(1) // optomda eng kam komplekt soni
   sizes          String[]
   unit           String   @default("dona") // dona | juft
   inStock        Boolean  @default(true)
-  stockPacks     Int? // optom komplekt qoldig'i (null = hisoblanmaydi)
-  stockPairs     Json? // dona: { "M": 3, "L": 0 } (null = hisoblanmaydi)
+  stockPairs     Json? // { "M": 3, "L": 0 } (null = hisoblanmaydi)
   instagram      String?
   isActive       Boolean  @default(true)
   isPopular      Boolean  @default(false)
@@ -68,7 +65,6 @@ model Order {
   items         Json
   totalQty      Int
   total         Int
-  isWholesale   Boolean   @default(false)
   customerName  String
   phone         String
   region        String

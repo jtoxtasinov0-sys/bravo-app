@@ -78,20 +78,17 @@ const PAY_STATUS = {
 // Bitta mahsulot qatori (rasm ostidagi yozuv va umumiy ro'yxat uchun)
 function itemLine(it) {
   const color = it.color ? esc(it.color) : '<i>belgilanmagan</i>';
-  const what =
-    it.mode === 'wholesale'
-      ? `${it.packs} komplekt (${(it.sizes || []).join(', ')})`
-      : Object.entries(it.sizeQty || {})
-          .filter(([, q]) => q > 0)
-          .map(([s, q]) => `${esc(s)}×${q}`)
-          .join(', ');
+  const what = Object.entries(it.sizeQty || {})
+    .filter(([, q]) => q > 0)
+    .map(([s, q]) => `${esc(s)}×${q}`)
+    .join(', ');
   return { color, what };
 }
 
 function itemCaption(order, it) {
   const { color, what } = itemLine(it);
   return [
-    `🛒 Buyurtma #${order.id}${it.mode === 'wholesale' ? ' (OPTOM)' : ''}`,
+    `🛒 Buyurtma #${order.id}`,
     `<b>${esc(it.name)}</b>`,
     `Artikul: <code>${esc(it.article)}</code>`,
     `🎨 Rang: ${color}`,
@@ -109,7 +106,7 @@ function orderSummary(order) {
     ? `<a href="tg://user?id=${order.telegramId}">Telegramda yozish</a>`
     : '—';
   return [
-    `🆕 <b>Yangi${order.isWholesale ? ' (OPTOM)' : ''} buyurtma #${order.id}</b>`,
+    `🆕 <b>Yangi buyurtma #${order.id}</b>`,
     '',
     ...lines,
     '',

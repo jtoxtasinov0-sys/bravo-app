@@ -1,10 +1,10 @@
-// Mahsulot oynasi (pastdan chiqadi): rasmlar, rang, optom komplekt yoki dona razmerlar
+// Mahsulot oynasi (pastdan chiqadi): rasmlar, rang, razmerlar
 import { useMemo, useRef, useState } from 'react';
 import { useStore } from '../lib/store';
 import { pick } from '../lib/i18n';
 import { money } from '../lib/format';
 import { imagesForColor, isLight } from '../lib/colors';
-import { packsLeft, sizeLeft, availableIn } from '../lib/stock';
+import { sizeLeft, isAvailable } from '../lib/stock';
 import { haptic } from '../lib/telegram';
 import { useBack } from '../lib/back';
 import Img from './Img';
@@ -38,37 +38,25 @@ function Stepper({ value, onChange, min = 0, max = Infinity }) {
 }
 
 export default function ProductSheet({ product: p, onClose, onAdded }) {
-  const { lang, t, mode, setMode, config, addToCart } = useStore();
+  const { lang, t, config, addToCart } = useStore();
   const [color, setColor] = useState(p.colors?.[0]?.name || null);
   const [slide, setSlide] = useState(0);
   const [viewer, setViewer] = useState(null);
-  const [packs, setPacks] = useState(Math.max(1, p.wholesaleMin || 1));
   const [sizeQty, setSizeQty] = useState({});
   const trackRef = useRef(null);
   useBack(onClose, !viewer);
 
   const idx = useMemo(() => imagesForColor(p, color), [p, color]);
   const unit = config?.units?.[p.unit]?.[lang] || p.unit;
-  const wholesale = mode === 'wholesale';
   const sizes = p.sizes?.length ? p.sizes : ['—'];
-  const available = availableIn(p, mode);
-  const maxPacks = packsLeft(p);
+  const available = isAvailable(p);
 
-  const qty = wholesale ? packs * sizes.length : Object.values(sizeQty).reduce((a, b) => a + b, 0);
-  const unitPrice = wholesale ? p.wholesalePrice : p.price;
-  const total = qty * unitPrice;
-  const saving = p.price - p.wholesalePrice;
-  const bothModes = config?.retailEnabled && config?.wholesaleEnabled;
+  const qty = Object.values(sizeQty).reduce((a, b) => a + b, 0);
+  const total = qty * p.price;
 
   const add = () => {
     if (!qty || !available) return;
-    addToCart({
-      productId: p.id,
-      mode,
-      color,
-      packs: wholesale ? packs : null,
-      sizeQty: wholesale ? null : sizeQty,
-    });
+    addToCart({ productId: p.id, color, sizeQty });
     haptic.success();
     onAdded?.();
     onClose();
@@ -113,23 +101,8 @@ export default function ProductSheet({ product: p, onClose, onAdded }) {
             {t.article}: {p.article}
           </div>
           <h2 className="sheet-title">{pick(p, 'name', lang)}</h2>
-          <PriceTag product={p} mode={mode} size="lg" />
-          <div className="muted small">{wholesale ? t.perUnitWholesale : t.perUnit}</div>
-
-          {bothModes && (
-            <div className="seg seg-sm">
-              <button className={wholesale ? 'on' : ''} onClick={() => setMode('wholesale')}>
-                {t.wholesaleShort}
-              </button>
-              <button className={!wholesale ? 'on' : ''} onClick={() => setMode('retail')}>
-                {t.retailShort}
-              </button>
-            </div>
-          )}
-
-          {!wholesale && saving > 0 && config?.wholesaleEnabled && (
-            <div className="hint">💡 {t.cheaperWholesale(money(saving, lang))}</div>
-          )}
+          <PriceTag product={p} size="lg" />
+          <div className="muted small">{t.perUnit}</div>
 
           {p.colors?.length > 0 && (
             <div className="block">
@@ -158,30 +131,6 @@ export default function ProductSheet({ product: p, onClose, onAdded }) {
 
           {!available ? (
             <div className="soldout-box">{t.soldOut}</div>
-          ) : wholesale ? (
-            <div className="block">
-              <div className="label">{t.packs}</div>
-              <div className="row between">
-                <div className="muted small">
-                  {t.packInfo(sizes.length, unit)}
-                  <br />
-                  {t.sizes}: {sizes.join(', ')}
-                  {p.wholesaleMin > 1 && (
-                    <>
-                      <br />
-                      {t.minPacks(p.wholesaleMin)}
-                    </>
-                  )}
-                  {maxPacks !== Infinity && (
-                    <>
-                      <br />
-                      {t.left}: {maxPacks}
-                    </>
-                  )}
-                </div>
-                <Stepper value={packs} onChange={setPacks} min={p.wholesaleMin || 1} max={maxPacks} />
-              </div>
-            </div>
           ) : (
             <div className="block">
               <div className="label">{t.sizes}</div>

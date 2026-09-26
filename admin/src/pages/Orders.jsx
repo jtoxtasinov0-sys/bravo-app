@@ -18,9 +18,7 @@ function OrderDetail({ order, onClose, onChange, onDelete }) {
     <div className="modal-wrap" onClick={onClose}>
       <div className="modal" onClick={(e) => e.stopPropagation()}>
         <div className="row between">
-          <h2>
-            Buyurtma #{order.id} {order.isWholesale && <span className="status st-blue">OPTOM</span>}
-          </h2>
+          <h2>Buyurtma #{order.id}</h2>
           <button className="icon-btn" onClick={onClose}>
             ✕
           </button>
@@ -84,11 +82,9 @@ function OrderDetail({ order, onClose, onChange, onDelete }) {
                 {it.article} · {it.color ? <><ColorDot hex={it.colorHex} size={10} /> {it.color}</> : 'rang belgilanmagan'}
               </div>
               <div className="small">
-                {it.mode === 'wholesale'
-                  ? `${it.packs} komplekt (${(it.sizes || []).join(', ')})`
-                  : Object.entries(it.sizeQty || {})
-                      .map(([s, q]) => `${s}×${q}`)
-                      .join(', ')}
+                {Object.entries(it.sizeQty || {})
+                  .map(([s, q]) => `${s}×${q}`)
+                  .join(', ')}
               </div>
             </div>
             <div className="right small">
@@ -236,7 +232,6 @@ export default function Orders() {
               <tr key={o.id} onClick={() => setOpen(o)} className={o.status === 'new' ? 'row-new' : ''}>
                 <td>
                   <b>#{o.id}</b>
-                  {o.isWholesale && <div className="status st-blue tiny">OPTOM</div>}
                 </td>
                 <td className="small nowrap">{date(o.createdAt)}</td>
                 <td>

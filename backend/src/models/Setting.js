@@ -6,8 +6,6 @@ const DEFAULTS = {
   cardNumber: cfg.card.number,
   cardHolder: cfg.card.holder,
   cardType: cfg.card.type || 'Uzcard',
-  retailEnabled: 'true',
-  wholesaleEnabled: 'true',
 };
 
 async function getAll() {

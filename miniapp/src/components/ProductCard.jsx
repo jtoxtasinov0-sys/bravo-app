@@ -1,19 +1,16 @@
 // Mahsulot kartochkasi (katalog va bosh sahifada)
 import { useStore } from '../lib/store';
 import { pick } from '../lib/i18n';
-import { availableIn, packsLeft } from '../lib/stock';
+import { isAvailable } from '../lib/stock';
 import { isLight } from '../lib/colors';
 import Img from './Img';
 import PriceTag from './PriceTag';
 
 export default function ProductCard({ product, onOpen }) {
-  const { lang, t, mode } = useStore();
-  const available = availableIn(product, mode);
-  const left = mode === 'wholesale' ? packsLeft(product) : product.pairsTotal ?? Infinity;
-  const discount =
-    mode !== 'wholesale' && product.oldPrice > product.price
-      ? Math.round((1 - product.price / product.oldPrice) * 100)
-      : 0;
+  const { lang, t } = useStore();
+  const available = isAvailable(product);
+  const left = product.pairsTotal ?? Infinity;
+  const discount = product.oldPrice > product.price ? Math.round((1 - product.price / product.oldPrice) * 100) : 0;
 
   return (
     <button className={'card' + (available ? '' : ' card-off')} onClick={() => onOpen(product)}>
@@ -36,7 +33,7 @@ export default function ProductCard({ product, onOpen }) {
             ))}
           </div>
         )}
-        <PriceTag product={product} mode={mode} size="sm" />
+        <PriceTag product={product} size="sm" />
       </div>
     </button>
   );

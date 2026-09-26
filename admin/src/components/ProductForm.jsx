@@ -18,8 +18,6 @@ const EMPTY = {
   imageColors: [],
   price: '',
   oldPrice: '',
-  wholesalePrice: '',
-  wholesaleMin: 1,
   sizes: [],
   unit: 'dona',
   inStock: true,
@@ -78,9 +76,6 @@ export default function ProductForm({ product, meta, onSaved, onClose }) {
       setBusy(false);
     }
   };
-
-  const wp = Number(f.wholesalePrice) || 0;
-  const pr = Number(f.price) || 0;
 
   return (
     <div className="modal-wrap" onClick={onClose}>
@@ -180,30 +175,14 @@ export default function ProductForm({ product, meta, onSaved, onClose }) {
 
         <div className="form-grid mt8">
           <label className="field">
-            <span>Dona narx (so'm) *</span>
+            <span>Narx (so'm) *</span>
             <input type="number" min="0" value={f.price} onChange={set('price')} required />
           </label>
           <label className="field">
             <span>Eski narx (chizilgan)</span>
             <input type="number" min="0" value={f.oldPrice} onChange={set('oldPrice')} />
           </label>
-          <label className="field">
-            <span>Optom narx (1 {meta.units[f.unit]?.uz || 'dona'})</span>
-            <input type="number" min="0" value={f.wholesalePrice} onChange={set('wholesalePrice')} />
-          </label>
-          <label className="field">
-            <span>Optomda kamida (komplekt)</span>
-            <input type="number" min="1" value={f.wholesaleMin} onChange={set('wholesaleMin')} />
-          </label>
         </div>
-        {wp > 0 && pr > 0 && wp >= pr && (
-          <div className="notice notice-warn">⚠️ Optom narx dona narxidan arzon emas — optomda ham dona narx qo'llanadi.</div>
-        )}
-        {wp > 0 && f.sizes.length > 0 && (
-          <div className="muted small">
-            1 komplekt = {f.sizes.length} {meta.units[f.unit]?.uz} × {money(wp)} = <b>{money(wp * f.sizes.length)}</b>
-          </div>
-        )}
 
         <div className="label mt16">Razmerlar</div>
         <div className="chips">

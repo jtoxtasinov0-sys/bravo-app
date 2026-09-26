@@ -2,13 +2,11 @@
 import { useEffect, useState } from 'react';
 import { useStore } from './lib/store';
 import { api, onWaking } from './lib/api';
-import { haptic } from './lib/telegram';
 import { useBack } from './lib/back';
 import BottomNav from './components/BottomNav';
 import ProductSheet from './components/ProductSheet';
 import PaymentScreen from './components/PaymentScreen';
 import Onboarding from './pages/Onboarding';
-import ModeSelect from './pages/ModeSelect';
 import Home from './pages/Home';
 import Catalog from './pages/Catalog';
 import Cart from './pages/Cart';
@@ -35,7 +33,7 @@ function Done({ order, onClose }) {
 
 export default function App() {
   const store = useStore();
-  const { config, user, products, t, mode, setMode, error, reload } = store;
+  const { config, user, products, t, error, reload } = store;
   const [waking, setWaking] = useState(false);
   const [tab, setTab] = useState('home');
   const [category, setCategory] = useState(null);
@@ -102,10 +100,7 @@ export default function App() {
     );
   }
 
-  if (!mode) return <ModeSelect />;
-
   const product = productId ? products.find((p) => p.id === productId) : null;
-  const both = config.retailEnabled && config.wholesaleEnabled;
 
   const openPay = async (orderId) => {
     try {
@@ -119,30 +114,6 @@ export default function App() {
     <div className="app">
       {waking && <div className="waking">{t.waking}</div>}
 
-      {both && (
-        <div className="topbar">
-          <div className="seg">
-            <button
-              className={mode === 'wholesale' ? 'on' : ''}
-              onClick={() => {
-                haptic.select();
-                setMode('wholesale');
-              }}
-            >
-              📦 {t.wholesale}
-            </button>
-            <button
-              className={mode === 'retail' ? 'on' : ''}
-              onClick={() => {
-                haptic.select();
-                setMode('retail');
-              }}
-            >
-              👕 {t.retail}
-            </button>
-          </div>
-        </div>
-      )}
 
       {tab === 'home' && (
         <Home

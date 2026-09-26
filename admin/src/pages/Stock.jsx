@@ -1,10 +1,9 @@
-// Ombor: optom komplekt qoldig'i va dona razmer qoldiqlari (bir-biriga ta'sir qilmaydi)
-// Bo'sh katak = cheklov yo'q (hisoblanmaydi)
+// Ombor: razmer bo'yicha qoldiqlar
+// "hisoblash" o'chiq = cheklov yo'q
 import { useEffect, useMemo, useState } from 'react';
 import { api, imgUrl } from '../lib/api';
 
 function StockRow({ p, onSaved }) {
-  const [packs, setPacks] = useState(p.stockPacks ?? '');
   const [pairsOn, setPairsOn] = useState(p.stockPairs !== null && p.stockPairs !== undefined);
   const [pairs, setPairs] = useState(() => Object.fromEntries(p.sizes.map((s) => [s, p.stockPairs?.[s] ?? 0])));
   const [inStock, setInStock] = useState(p.inStock);
@@ -15,7 +14,6 @@ function StockRow({ p, onSaved }) {
     setBusy(true);
     try {
       await api.put(`/products/${p.id}/stock`, {
-        stockPacks: packs === '' ? null : Number(packs),
         stockPairs: pairsOn ? pairs : null,
         inStock,
       });
@@ -44,9 +42,6 @@ function StockRow({ p, onSaved }) {
         <label className="check small">
           <input type="checkbox" checked={inStock} onChange={(e) => setInStock(e.target.checked)} /> bor
         </label>
-      </td>
-      <td>
-        <input className="num" type="number" min="0" placeholder="∞" value={packs} onChange={(e) => setPacks(e.target.value)} />
       </td>
       <td>
         <label className="check small">
@@ -99,8 +94,8 @@ export default function Stock({ meta }) {
         <h1>Ombor</h1>
       </div>
       <p className="muted small">
-        Bo'sh qoldirilsa — cheklov yo'q (qoldiq hisoblanmaydi). Buyurtma berilganda qoldiq avtomatik kamayadi, bekor qilinsa —
-        qaytadi. Optom (komplekt) va dona (razmer) qoldiqlari alohida.
+        «Hisoblash» o'chiq bo'lsa — cheklov yo'q (qoldiq hisoblanmaydi). Buyurtma berilganda qoldiq avtomatik kamayadi, bekor
+        qilinsa — qaytadi.
       </p>
       <div className="filters">
         <input placeholder="Qidirish" value={q} onChange={(e) => setQ(e.target.value)} />
@@ -119,8 +114,7 @@ export default function Stock({ meta }) {
             <tr>
               <th>Mahsulot</th>
               <th>Sotuvda</th>
-              <th>Optom (komplekt)</th>
-              <th>Dona (razmer bo'yicha)</th>
+              <th>Qoldiq (razmer bo'yicha)</th>
               <th />
             </tr>
           </thead>

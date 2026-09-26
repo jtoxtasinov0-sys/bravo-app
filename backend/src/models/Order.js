@@ -16,7 +16,6 @@ async function create(calc, data, user, lang) {
         items: calc.lines,
         totalQty: calc.totalQty,
         total: calc.total,
-        isWholesale: calc.isWholesale,
         ...data,
       },
     });

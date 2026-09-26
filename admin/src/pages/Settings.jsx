@@ -1,4 +1,4 @@
-// Sozlamalar: to'lov kartasi, optom/dona savdoni yoqish-o'chirish
+// Sozlamalar: to'lov kartasi
 import { useEffect, useState } from 'react';
 import { api } from '../lib/api';
 
@@ -14,10 +14,6 @@ export default function Settings() {
   const save = async (e) => {
     e.preventDefault();
     setErr('');
-    if (s.retailEnabled === 'false' && s.wholesaleEnabled === 'false') {
-      setErr("Optom va dona savdoning ikkalasini o'chirib bo'lmaydi");
-      return;
-    }
     try {
       setS(await api.put('/settings', s));
       setOk(true);
@@ -58,16 +54,6 @@ export default function Settings() {
               <option>Visa</option>
             </select>
           </label>
-        </div>
-        <div className="card pad">
-          <h3>🛒 Savdo turlari</h3>
-          <label className="check big">
-            <input type="checkbox" checked={s.wholesaleEnabled !== 'false'} onChange={set('wholesaleEnabled')} /> Ulgurji (optom) savdo
-          </label>
-          <label className="check big">
-            <input type="checkbox" checked={s.retailEnabled !== 'false'} onChange={set('retailEnabled')} /> Donaga savdo
-          </label>
-          <p className="muted small">Bittasi o'chirilsa — Mini App'da faqat ikkinchisi ko'rinadi.</p>
         </div>
       </div>
       {err && <div className="notice notice-err">{err}</div>}

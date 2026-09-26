@@ -80,13 +80,7 @@ export default function Products({ meta }) {
                   <span className="small muted">{p.sizes.join(', ')}</span>
                 </div>
                 <div className="small">
-                  Dona: <b>{money(p.price)}</b>
-                  {p.wholesalePrice ? (
-                    <>
-                      {' '}
-                      · Optom: <b>{money(p.wholesalePrice)}</b>
-                    </>
-                  ) : null}
+                  Narx: <b>{money(p.price)}</b>
                 </div>
                 <div className="row gap6 mt8">
                   <button className="btn btn-light btn-sm" onClick={() => setEdit(p)}>

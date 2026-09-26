@@ -1,4 +1,4 @@
-// Savatcha: optom va dona bo'limlari alohida. Narxlar serverda qayta hisoblanadi
+// Savatcha. Narxlar serverda qayta hisoblanadi
 import { useEffect, useState } from 'react';
 import { useStore } from '../lib/store';
 import { api } from '../lib/api';
@@ -61,17 +61,10 @@ export default function Cart({ onCheckout, onCatalog }) {
   const lineFor = (key) => calc?.lines.find((l) => l.key === key);
   const unitName = (u) => config?.units?.[u]?.[lang] || u;
 
-  const section = (mode, title) => {
-    const items = cart.filter((c) => c.mode === mode);
-    if (!items.length) return null;
-    const sum = items.reduce((a, c) => a + (lineFor(c.key)?.lineTotal || 0), 0);
+  const list = () => {
     return (
       <section className="cart-section">
-        <div className="section-head">
-          <h2>{title}</h2>
-          <span className="muted small">{money(sum, lang)}</span>
-        </div>
-        {items.map((c) => {
+        {cart.map((c) => {
           const l = lineFor(c.key);
           return (
             <div key={c.key} className={'cart-item' + (l ? '' : ' off')}>
@@ -87,32 +80,25 @@ export default function Cart({ onCheckout, onCatalog }) {
                   {l ? `${money(l.unitPrice, lang)} × ${l.qty} ${unitName(l.unit)}` : ''}
                 </div>
 
-                {mode === 'wholesale' ? (
-                  <div className="row between mt8">
-                    <span className="small">{t.packs}</span>
-                    <Mini value={c.packs || 0} min={1} onChange={(v) => updateCartItem(c.key, { packs: v })} />
-                  </div>
-                ) : (
-                  <div className="cart-sizes">
-                    {Object.entries(c.sizeQty || {})
-                      .filter(([, q]) => q > 0)
-                      .map(([s, q]) => (
-                        <div key={s} className="row between">
-                          <span className="small">
-                            {t.size} <b>{s}</b>
-                          </span>
-                          <Mini
-                            value={q}
-                            onChange={(v) => {
-                              const next = { ...c.sizeQty, [s]: v };
-                              if (!Object.values(next).some((x) => x > 0)) removeFromCart(c.key);
-                              else updateCartItem(c.key, { sizeQty: next });
-                            }}
-                          />
-                        </div>
-                      ))}
-                  </div>
-                )}
+                <div className="cart-sizes">
+                  {Object.entries(c.sizeQty || {})
+                    .filter(([, q]) => q > 0)
+                    .map(([s, q]) => (
+                      <div key={s} className="row between">
+                        <span className="small">
+                          {t.size} <b>{s}</b>
+                        </span>
+                        <Mini
+                          value={q}
+                          onChange={(v) => {
+                            const next = { ...c.sizeQty, [s]: v };
+                            if (!Object.values(next).some((x) => x > 0)) removeFromCart(c.key);
+                            else updateCartItem(c.key, { sizeQty: next });
+                          }}
+                        />
+                      </div>
+                    ))}
+                </div>
                 <div className="row between mt8">
                   <b>{l ? money(l.lineTotal, lang) : ''}</b>
                   <button
@@ -142,8 +128,7 @@ export default function Cart({ onCheckout, onCatalog }) {
         </button>
       </div>
 
-      {section('wholesale', t.wholesaleSection)}
-      {section('retail', t.retailSection)}
+      {list()}
 
       {calc?.errors?.length > 0 && (
         <div className="notice notice-err">

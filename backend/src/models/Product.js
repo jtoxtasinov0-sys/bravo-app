@@ -40,8 +40,6 @@ function sanitize(body) {
     imageColors: colors,
     price: toInt(body.price) ?? 0,
     oldPrice: toInt(body.oldPrice),
-    wholesalePrice: toInt(body.wholesalePrice),
-    wholesaleMin: Math.max(1, toInt(body.wholesaleMin) || 1),
     sizes,
     unit: body.unit === 'juft' ? 'juft' : 'dona',
     inStock: body.inStock !== false,
@@ -52,19 +50,13 @@ function sanitize(body) {
   };
 }
 
-// Optom narx dona narxidan arzon bo'lsagina qo'llanadi
-function effectiveWholesale(p) {
-  return p.wholesalePrice && p.wholesalePrice < p.price ? p.wholesalePrice : p.price;
-}
-
 // Ombordagi umumiy qoldiq holati (mijoz uchun)
 function stockInfo(p) {
   const pairs = p.stockPairs && typeof p.stockPairs === 'object' ? p.stockPairs : null;
   const pairsTotal = pairs ? Object.values(pairs).reduce((a, b) => a + (Number(b) || 0), 0) : null;
-  // null — cheklov yo'q. Optom ham, dona ham 0 bo'lsagina "tugagan"
-  const packs = p.stockPacks ?? null;
-  const soldOut = !p.inStock || (packs !== null && packs <= 0 && pairsTotal !== null && pairsTotal <= 0);
-  return { stockPacks: p.stockPacks ?? null, stockPairs: pairs, pairsTotal, soldOut };
+  // null — cheklov yo'q
+  const soldOut = !p.inStock || (pairsTotal !== null && pairsTotal <= 0);
+  return { stockPairs: pairs, pairsTotal, soldOut };
 }
 
 // Mini App uchun ko'rinish
@@ -86,8 +78,6 @@ function toPublic(p) {
     colors: productColors(p),
     price: p.price,
     oldPrice: p.oldPrice,
-    wholesalePrice: effectiveWholesale(p),
-    wholesaleMin: p.wholesaleMin,
     sizes: p.sizes,
     unit: p.unit,
     isPopular: p.isPopular,
@@ -96,4 +86,4 @@ function toPublic(p) {
   };
 }
 
-module.exports = { sanitize, toPublic, effectiveWholesale, stockInfo };
+module.exports = { sanitize, toPublic, stockInfo };

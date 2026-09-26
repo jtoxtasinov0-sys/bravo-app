@@ -23,13 +23,7 @@ export default function Profile({ onPay, onCart }) {
 
   const reorder = (o) => {
     for (const it of o.items) {
-      addToCart({
-        productId: it.productId,
-        mode: it.mode,
-        color: it.color,
-        packs: it.mode === 'wholesale' ? it.packs : null,
-        sizeQty: it.mode === 'wholesale' ? null : it.sizeQty,
-      });
+      if (it.sizeQty) addToCart({ productId: it.productId, color: it.color, sizeQty: it.sizeQty });
     }
     haptic.success();
     onCart();

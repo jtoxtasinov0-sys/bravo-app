@@ -82,7 +82,7 @@ npx prisma migrate dev --name ozgarish_nomi
 
 Bazani jadval ko'rinishida ko'rish: `npx prisma studio`
 
-> ⚠️ Katalogda narxlar yo'q edi, shuning uchun seed **namunaviy narxlar** qo'ydi (masalan, oyoq kiyim 350 000 / optom 310 000). Admin paneldan haqiqiy narxlarni kiriting.
+> ⚠️ Katalogda narxlar yo'q edi, shuning uchun seed **namunaviy narxlar** qo'ydi (masalan, oyoq kiyim 350 000). Admin paneldan haqiqiy narxlarni kiriting.
 
 ---
 

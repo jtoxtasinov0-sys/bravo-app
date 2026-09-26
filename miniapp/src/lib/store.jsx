@@ -1,5 +1,5 @@
-// Umumiy holat: sozlamalar, foydalanuvchi, til, rejim (optom/dona), savatcha
-import { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
+// Umumiy holat: sozlamalar, foydalanuvchi, til, savatcha
+import { createContext, useCallback, useContext, useEffect, useState } from 'react';
 import { api } from './api';
 import { DICT } from './i18n';
 import { tgUser } from './telegram';
@@ -22,8 +22,8 @@ const save = (k, v) => {
   }
 };
 
-// Savatcha elementi kaliti: mahsulot + rejim + rang
-export const cartKey = (productId, mode, color) => `${productId}|${mode}|${color || ''}`;
+// Savatcha elementi kaliti: mahsulot + rang
+export const cartKey = (productId, color) => `${productId}|${color || ''}`;
 
 export function StoreProvider({ children }) {
   const [config, setConfig] = useState(null);
@@ -32,8 +32,8 @@ export function StoreProvider({ children }) {
   const [products, setProducts] = useState([]);
   const [stories, setStories] = useState([]);
   const [lang, setLangState] = useState(() => load('bravo_lang', tgUser()?.language_code === 'ru' ? 'ru' : 'uz'));
-  const [mode, setModeState] = useState(() => load('bravo_mode', null));
-  const [cart, setCart] = useState(() => load('bravo_cart', []));
+  // Eski (optom) elementlar savatchadan olib tashlanadi
+  const [cart, setCart] = useState(() => load('bravo_cart', []).filter((x) => x.sizeQty && x.mode !== 'wholesale'));
   const [error, setError] = useState(null);
 
   const loadAll = useCallback(async () => {
@@ -64,32 +64,19 @@ export function StoreProvider({ children }) {
     save('bravo_cart', cart);
   }, [cart]);
 
-  // Admin donaga savdoni o'chirsa — faqat optom
-  const effectiveMode = useMemo(() => {
-    if (!config) return mode;
-    if (!config.retailEnabled) return 'wholesale';
-    if (!config.wholesaleEnabled) return 'retail';
-    return mode;
-  }, [config, mode]);
-
   const setLang = (l) => {
     setLangState(l);
     save('bravo_lang', l);
     api.patch('/me', { lang: l }).catch(() => {});
   };
-  const setMode = (m) => {
-    setModeState(m);
-    save('bravo_mode', m);
-  };
 
   const addToCart = (item) =>
     setCart((c) => {
-      const key = cartKey(item.productId, item.mode, item.color);
+      const key = cartKey(item.productId, item.color);
       const ex = c.find((x) => x.key === key);
       if (!ex) return [...c, { ...item, key }];
       return c.map((x) => {
         if (x.key !== key) return x;
-        if (item.mode === 'wholesale') return { ...x, packs: (x.packs || 0) + (item.packs || 0) };
         const sizeQty = { ...x.sizeQty };
         for (const [s, q] of Object.entries(item.sizeQty || {})) sizeQty[s] = (sizeQty[s] || 0) + q;
         return { ...x, sizeQty };
@@ -100,10 +87,7 @@ export function StoreProvider({ children }) {
   const removeFromCart = (key) => setCart((c) => c.filter((x) => x.key !== key));
   const clearCart = () => setCart([]);
 
-  const cartCount = cart.reduce(
-    (a, x) => a + (x.mode === 'wholesale' ? x.packs || 0 : Object.values(x.sizeQty || {}).reduce((s, q) => s + q, 0)),
-    0
-  );
+  const cartCount = cart.reduce((a, x) => a + Object.values(x.sizeQty || {}).reduce((s, q) => s + q, 0), 0);
 
   const t = DICT[lang] || DICT.uz;
 
@@ -117,8 +101,6 @@ export function StoreProvider({ children }) {
     lang,
     setLang,
     t,
-    mode: effectiveMode,
-    setMode,
     cart,
     addToCart,
     updateCartItem,
