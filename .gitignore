@@ -1,0 +1,9 @@
+node_modules/
+dist/
+.env
+.env.local
+backend/uploads/receipts/*
+backend/uploads/broadcast/*
+backend/uploads/stories/*
+!backend/uploads/**/.gitkeep
+*.log

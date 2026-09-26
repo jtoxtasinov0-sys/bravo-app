@@ -1,0 +1,102 @@
+// Bravo do'koni — baza jadvallari
+// DATABASE_URL — Neon "-pooler" manzili (ilova ishlashi uchun)
+// DIRECT_URL   — Neon "-pooler" SIZ manzil (migratsiyalar uchun)
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+// Botdan / Mini App'dan foydalangan odamlar
+model User {
+  id         Int      @id @default(autoincrement())
+  telegramId String   @unique
+  firstName  String?
+  lastName   String?
+  username   String?
+  phone      String?
+  lang       String   @default("uz") // uz | ru
+  seenIntro  Boolean  @default(false)
+  isAdmin    Boolean  @default(false) // botda /admin PAROL qilgan
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  orders     Order[]
+}
+
+model Product {
+  id             Int      @id @default(autoincrement())
+  article        String   @unique
+  name           String
+  nameRu         String?
+  description    String?
+  descriptionRu  String?
+  category       String
+  tag            String?
+  material       String?
+  materialRu     String?
+  images         String[]
+  imageFrames    Json? // har rasm uchun: { zoom, x, y }
+  imageColors    Json? // har rasm uchun: { name, hex } yoki null
+  price          Int // dona narx (so'm)
+  oldPrice       Int? // chizilgan eski narx
+  wholesalePrice Int? // optom narx (1 dona/juft uchun)
+  wholesaleMin   Int      @default(1) // optomda eng kam komplekt soni
+  sizes          String[]
+  unit           String   @default("dona") // dona | juft
+  inStock        Boolean  @default(true)
+  stockPacks     Int? // optom komplekt qoldig'i (null = hisoblanmaydi)
+  stockPairs     Json? // dona: { "M": 3, "L": 0 } (null = hisoblanmaydi)
+  instagram      String?
+  isActive       Boolean  @default(true)
+  isPopular      Boolean  @default(false)
+  sortOrder      Int      @default(0)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+  stories        Story[]
+}
+
+model Order {
+  id            Int       @id @default(autoincrement())
+  userId        Int?
+  user          User?     @relation(fields: [userId], references: [id], onDelete: SetNull)
+  telegramId    String?
+  items         Json
+  totalQty      Int
+  total         Int
+  isWholesale   Boolean   @default(false)
+  customerName  String
+  phone         String
+  region        String
+  address       String
+  comment       String?
+  paymentMethod String    @default("cash") // cash | click | card
+  paymentStatus String    @default("unpaid") // unpaid | pending | paid | rejected
+  receiptUrl    String?
+  receiptAt     DateTime?
+  status        String    @default("new") // new | confirmed | delivered | cancelled
+  stockReturned Boolean   @default(false)
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+}
+
+model Setting {
+  key   String @id
+  value String
+}
+
+model Story {
+  id        Int      @id @default(autoincrement())
+  title     String
+  titleRu   String?
+  image     String
+  productId Int?
+  product   Product? @relation(fields: [productId], references: [id], onDelete: SetNull)
+  isActive  Boolean  @default(true)
+  sortOrder Int      @default(0)
+  createdAt DateTime @default(now())
+}

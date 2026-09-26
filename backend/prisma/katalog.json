@@ -1,0 +1,374 @@
+{
+  "dokon": "Bravo — erkaklar kiyim do'koni (@bravo_andijon_)",
+  "mahsulotlar": [
+    {
+      "id": 1,
+      "kategoriya": "oyoq_kiyim",
+      "kategoriya_nomi": "Oyoq kiyimlar",
+      "nomi": "To'q ko'k to'qima slip-on krossovka",
+      "rasm": "oyoq_kiyim/oyoq_kiyim_01.jpg",
+      "narx": null,
+      "instagram": "https://www.instagram.com/bravo_andijon_/p/DVQiH-fCJdH/"
+    },
+    {
+      "id": 2,
+      "kategoriya": "oyoq_kiyim",
+      "kategoriya_nomi": "Oyoq kiyimlar",
+      "nomi": "Poyabzal vitrinasi (turli modellar)",
+      "rasm": "oyoq_kiyim/oyoq_kiyim_02.jpg",
+      "narx": null,
+      "instagram": "https://www.instagram.com/bravo_andijon_/reel/DN5dOvfCDz1/"
+    },
+    {
+      "id": 3,
+      "kategoriya": "oyoq_kiyim",
+      "kategoriya_nomi": "Oyoq kiyimlar",
+      "nomi": "Bej to'qima mokasin (BOSS)",
+      "rasm": "oyoq_kiyim/oyoq_kiyim_03.jpg",
+      "narx": null,
+      "instagram": "https://www.instagram.com/bravo_andijon_/reel/DJ6mrcITJuQ/"
+    },
+    {
+      "id": 4,
+      "kategoriya": "oyoq_kiyim",
+      "kategoriya_nomi": "Oyoq kiyimlar",
+      "nomi": "Xaki-yashil slip-on krossovka",
+      "rasm": "oyoq_kiyim/oyoq_kiyim_04.jpg",
+      "narx": null,
+      "instagram": "https://www.instagram.com/bravo_andijon_/reel/DHyHZ_6uKNb/"
+    },
+    {
+      "id": 5,
+      "kategoriya": "oyoq_kiyim",
+      "kategoriya_nomi": "Oyoq kiyimlar",
+      "nomi": "Qora-kulrang zamsh krossovka",
+      "rasm": "oyoq_kiyim/oyoq_kiyim_05.jpg",
+      "narx": null,
+      "instagram": "https://www.instagram.com/bravo_andijon_/reel/DHJLabhIqvS/"
+    },
+    {
+      "id": 6,
+      "kategoriya": "oyoq_kiyim",
+      "kategoriya_nomi": "Oyoq kiyimlar",
+      "nomi": "Qora charm krossovka",
+      "rasm": "oyoq_kiyim/oyoq_kiyim_06.jpg",
+      "narx": null,
+      "instagram": "https://www.instagram.com/bravo_andijon_/reel/DHBfDb5I1SM/"
+    },
+    {
+      "id": 7,
+      "kategoriya": "oyoq_kiyim",
+      "kategoriya_nomi": "Oyoq kiyimlar",
+      "nomi": "To'q ko'k EA7 krossovka",
+      "rasm": "oyoq_kiyim/oyoq_kiyim_07.jpg",
+      "narx": null,
+      "instagram": "https://www.instagram.com/bravo_andijon_/reel/DG-sBjXIq9d/"
+    },
+    {
+      "id": 8,
+      "kategoriya": "oyoq_kiyim",
+      "kategoriya_nomi": "Oyoq kiyimlar",
+      "nomi": "Kulrang-qora sport krossovka",
+      "rasm": "oyoq_kiyim/oyoq_kiyim_08.jpg",
+      "narx": null,
+      "instagram": "https://www.instagram.com/bravo_andijon_/reel/DAbHV6yKq-2/"
+    },
+    {
+      "id": 9,
+      "kategoriya": "oyoq_kiyim",
+      "kategoriya_nomi": "Oyoq kiyimlar",
+      "nomi": "Qora zamsh slip-on",
+      "rasm": "oyoq_kiyim/oyoq_kiyim_09.jpg",
+      "narx": null,
+      "instagram": "https://www.instagram.com/bravo_andijon_/reel/C79RHOhIwIG/"
+    },
+    {
+      "id": 10,
+      "kategoriya": "oyoq_kiyim",
+      "kategoriya_nomi": "Oyoq kiyimlar",
+      "nomi": "Qora zamsh loafer",
+      "rasm": "oyoq_kiyim/oyoq_kiyim_10.jpg",
+      "narx": null,
+      "instagram": "https://www.instagram.com/bravo_andijon_/reel/C7jcm4AIACf/"
+    },
+    {
+      "id": 11,
+      "kategoriya": "oyoq_kiyim",
+      "kategoriya_nomi": "Oyoq kiyimlar",
+      "nomi": "Kulrang zamsh loafer",
+      "rasm": "oyoq_kiyim/oyoq_kiyim_11.jpg",
+      "narx": null,
+      "instagram": "https://www.instagram.com/bravo_andijon_/reel/C7gvQMBoZPQ/"
+    },
+    {
+      "id": 12,
+      "kategoriya": "oyoq_kiyim",
+      "kategoriya_nomi": "Oyoq kiyimlar",
+      "nomi": "Qora to'qima slip-on krossovka",
+      "rasm": "oyoq_kiyim/oyoq_kiyim_12.jpg",
+      "narx": null,
+      "instagram": "https://www.instagram.com/bravo_andijon_/reel/C7eHRJUIci8/"
+    },
+    {
+      "id": 13,
+      "kategoriya": "futbolka_polo",
+      "kategoriya_nomi": "Futbolka va polo",
+      "nomi": "Jigarrang V-yoqa polo",
+      "rasm": "futbolka_polo/futbolka_polo_01.jpg",
+      "narx": null,
+      "instagram": "https://www.instagram.com/bravo_andijon_/p/C9sPvrqMgty/"
+    },
+    {
+      "id": 14,
+      "kategoriya": "futbolka_polo",
+      "kategoriya_nomi": "Futbolka va polo",
+      "nomi": "Jigarrang logotipli futbolka",
+      "rasm": "futbolka_polo/futbolka_polo_02.jpg",
+      "narx": null,
+      "instagram": "https://www.instagram.com/bravo_andijon_/p/C736yjfovJE/"
+    },
+    {
+      "id": 15,
+      "kategoriya": "futbolka_polo",
+      "kategoriya_nomi": "Futbolka va polo",
+      "nomi": "To'q kulrang dizayn futbolka",
+      "rasm": "futbolka_polo/futbolka_polo_03.jpg",
+      "narx": null,
+      "instagram": "https://www.instagram.com/bravo_andijon_/p/C7tqzkEoCZE/"
+    },
+    {
+      "id": 16,
+      "kategoriya": "futbolka_polo",
+      "kategoriya_nomi": "Futbolka va polo",
+      "nomi": "Terrakota cho'ntakli futbolka",
+      "rasm": "futbolka_polo/futbolka_polo_04.jpg",
+      "narx": null,
+      "instagram": "https://www.instagram.com/bravo_andijon_/p/C7tqw7ao-l1/"
+    },
+    {
+      "id": 17,
+      "kategoriya": "futbolka_polo",
+      "kategoriya_nomi": "Futbolka va polo",
+      "nomi": "To'q sariq BOSS futbolka",
+      "rasm": "futbolka_polo/futbolka_polo_05.jpg",
+      "narx": null,
+      "instagram": "https://www.instagram.com/bravo_andijon_/p/C7tqvQkI3UH/"
+    },
+    {
+      "id": 18,
+      "kategoriya": "futbolka_polo",
+      "kategoriya_nomi": "Futbolka va polo",
+      "nomi": "Qora Zegna futbolka",
+      "rasm": "futbolka_polo/futbolka_polo_06.jpg",
+      "narx": null,
+      "instagram": "https://www.instagram.com/bravo_andijon_/p/C7PCYXAougn/"
+    },
+    {
+      "id": 19,
+      "kategoriya": "futbolka_polo",
+      "kategoriya_nomi": "Futbolka va polo",
+      "nomi": "Yashil futbolka",
+      "rasm": "futbolka_polo/futbolka_polo_07.jpg",
+      "narx": null,
+      "instagram": "https://www.instagram.com/bravo_andijon_/p/C7PCWlnIRNP/"
+    },
+    {
+      "id": 20,
+      "kategoriya": "futbolka_polo",
+      "kategoriya_nomi": "Futbolka va polo",
+      "nomi": "Moviy futbolka",
+      "rasm": "futbolka_polo/futbolka_polo_08.jpg",
+      "narx": null,
+      "instagram": "https://www.instagram.com/bravo_andijon_/p/C5ESqLTMHkG/"
+    },
+    {
+      "id": 21,
+      "kategoriya": "futbolka_polo",
+      "kategoriya_nomi": "Futbolka va polo",
+      "nomi": "Zaytun rang cho'ntakli futbolka",
+      "rasm": "futbolka_polo/futbolka_polo_09.jpg",
+      "narx": null,
+      "instagram": "https://www.instagram.com/bravo_andijon_/p/C5ESng4MGSp/"
+    },
+    {
+      "id": 22,
+      "kategoriya": "futbolka_polo",
+      "kategoriya_nomi": "Futbolka va polo",
+      "nomi": "Oq yozuvli futbolka",
+      "rasm": "futbolka_polo/futbolka_polo_10.jpg",
+      "narx": null,
+      "instagram": "https://www.instagram.com/bravo_andijon_/p/C5ESjPqMf5v/"
+    },
+    {
+      "id": 23,
+      "kategoriya": "koylak",
+      "kategoriya_nomi": "Ko'ylaklar",
+      "nomi": "Kulrang-ko'k ko'ylak",
+      "rasm": "koylak/koylak_01.jpg",
+      "narx": null,
+      "instagram": "https://www.instagram.com/bravo_andijon_/reel/DHjTKYJID6A/"
+    },
+    {
+      "id": 24,
+      "kategoriya": "koylak",
+      "kategoriya_nomi": "Ko'ylaklar",
+      "nomi": "Zaytun rang ko'ylak",
+      "rasm": "koylak/koylak_02.jpg",
+      "narx": null,
+      "instagram": "https://www.instagram.com/bravo_andijon_/reel/DHOqBLboSWt/"
+    },
+    {
+      "id": 25,
+      "kategoriya": "komplekt",
+      "kategoriya_nomi": "Komplekt / LOOK",
+      "nomi": "Kulrang bomber + shim + oyoq kiyim",
+      "rasm": "komplekt/komplekt_01.jpg",
+      "narx": null,
+      "instagram": "https://www.instagram.com/bravo_andijon_/p/C5a-K4ysiLd/"
+    },
+    {
+      "id": 26,
+      "kategoriya": "komplekt",
+      "kategoriya_nomi": "Komplekt / LOOK",
+      "nomi": "Oq zig'ir ko'ylak + yashil shim + krossovka",
+      "rasm": "komplekt/komplekt_02.jpg",
+      "narx": null,
+      "instagram": "https://www.instagram.com/bravo_andijon_/p/C5a-GW1MkN2/"
+    },
+    {
+      "id": 27,
+      "kategoriya": "komplekt",
+      "kategoriya_nomi": "Komplekt / LOOK",
+      "nomi": "Bej kurtka + futbolka + shim + krossovka",
+      "rasm": "komplekt/komplekt_03.jpg",
+      "narx": null,
+      "instagram": "https://www.instagram.com/bravo_andijon_/p/C5a-AdjMVgi/"
+    },
+    {
+      "id": 28,
+      "kategoriya": "komplekt",
+      "kategoriya_nomi": "Komplekt / LOOK",
+      "nomi": "To'q ko'k kurtka + jinsi + slip-on",
+      "rasm": "komplekt/komplekt_04.jpg",
+      "narx": null,
+      "instagram": "https://www.instagram.com/bravo_andijon_/p/C5TXtgqM4sB/"
+    },
+    {
+      "id": 29,
+      "kategoriya": "komplekt",
+      "kategoriya_nomi": "Komplekt / LOOK",
+      "nomi": "Qora zamokli polo + oq shim + krossovka",
+      "rasm": "komplekt/komplekt_05.jpg",
+      "narx": null,
+      "instagram": "https://www.instagram.com/bravo_andijon_/p/C5TXrgdMO62/"
+    },
+    {
+      "id": 30,
+      "kategoriya": "komplekt",
+      "kategoriya_nomi": "Komplekt / LOOK",
+      "nomi": "Chiziqli trikotaj polo + qora jinsi + loafer",
+      "rasm": "komplekt/komplekt_06.jpg",
+      "narx": null,
+      "instagram": "https://www.instagram.com/bravo_andijon_/p/C5TXooxsgmx/"
+    },
+    {
+      "id": 31,
+      "kategoriya": "komplekt",
+      "kategoriya_nomi": "Komplekt / LOOK",
+      "nomi": "Raglan futbolka + lampasli shim + slip-on",
+      "rasm": "komplekt/komplekt_07.jpg",
+      "narx": null,
+      "instagram": "https://www.instagram.com/bravo_andijon_/p/C4-xyOtoZxO/"
+    },
+    {
+      "id": 32,
+      "kategoriya": "komplekt",
+      "kategoriya_nomi": "Komplekt / LOOK",
+      "nomi": "Yashil PUMA kurtka + shim + slip-on",
+      "rasm": "komplekt/komplekt_08.jpg",
+      "narx": null,
+      "instagram": "https://www.instagram.com/bravo_andijon_/p/C4-xs13oxha/"
+    },
+    {
+      "id": 33,
+      "kategoriya": "komplekt",
+      "kategoriya_nomi": "Komplekt / LOOK",
+      "nomi": "Oq futbolka + qora shim + loafer",
+      "rasm": "komplekt/komplekt_09.jpg",
+      "narx": null,
+      "instagram": "https://www.instagram.com/bravo_andijon_/p/C4xwMqdMdO4/"
+    },
+    {
+      "id": 34,
+      "kategoriya": "komplekt",
+      "kategoriya_nomi": "Komplekt / LOOK",
+      "nomi": "Bej futbolka + shim + krossovka",
+      "rasm": "komplekt/komplekt_10.jpg",
+      "narx": null,
+      "instagram": "https://www.instagram.com/bravo_andijon_/p/C4xwIFfstV7/"
+    },
+    {
+      "id": 35,
+      "kategoriya": "komplekt",
+      "kategoriya_nomi": "Komplekt / LOOK",
+      "nomi": "Qora ko'ylak + oq jinsi + krossovka",
+      "rasm": "komplekt/komplekt_11.jpg",
+      "narx": null,
+      "instagram": "https://www.instagram.com/bravo_andijon_/p/C4xwBEIsOr4/"
+    },
+    {
+      "id": 36,
+      "kategoriya": "komplekt",
+      "kategoriya_nomi": "Komplekt / LOOK",
+      "nomi": "Qora polo + shim + krossovka",
+      "rasm": "komplekt/komplekt_12.jpg",
+      "narx": null,
+      "instagram": "https://www.instagram.com/bravo_andijon_/p/C4siJi5s_gh/"
+    },
+    {
+      "id": 37,
+      "kategoriya": "komplekt",
+      "kategoriya_nomi": "Komplekt / LOOK",
+      "nomi": "Ko'k sport kostyum + zamsh krossovka",
+      "rasm": "komplekt/komplekt_13.jpg",
+      "narx": null,
+      "instagram": "https://www.instagram.com/bravo_andijon_/p/C4siFiXs23t/"
+    },
+    {
+      "id": 38,
+      "kategoriya": "kurtka",
+      "kategoriya_nomi": "Kurtka va ustki kiyim",
+      "nomi": "To'q ko'k ko'ylak-kurtka",
+      "rasm": "kurtka/kurtka_01.jpg",
+      "narx": null,
+      "instagram": "https://www.instagram.com/bravo_andijon_/reel/DVYgcFRiNMX/"
+    },
+    {
+      "id": 39,
+      "kategoriya": "kurtka",
+      "kategoriya_nomi": "Kurtka va ustki kiyim",
+      "nomi": "Jigarrang trikotaj bomber",
+      "rasm": "kurtka/kurtka_02.jpg",
+      "narx": null,
+      "instagram": "https://www.instagram.com/bravo_andijon_/p/DSXbaI4iJdn/"
+    },
+    {
+      "id": 40,
+      "kategoriya": "kurtka",
+      "kategoriya_nomi": "Kurtka va ustki kiyim",
+      "nomi": "To'q ko'k qishki kurtka (mo'ynali yoqa)",
+      "rasm": "kurtka/kurtka_03.jpg",
+      "narx": null,
+      "instagram": "https://www.instagram.com/bravo_andijon_/reel/DRXDTDKiL1Y/"
+    },
+    {
+      "id": 41,
+      "kategoriya": "kurtka",
+      "kategoriya_nomi": "Kurtka va ustki kiyim",
+      "nomi": "Pufli qishki kurtka",
+      "rasm": "kurtka/kurtka_04.jpg",
+      "narx": null,
+      "instagram": "https://www.instagram.com/bravo_andijon_/reel/DRWtpZdiLAS/"
+    }
+  ]
+}

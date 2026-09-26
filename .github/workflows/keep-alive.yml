@@ -1,0 +1,12 @@
+# Render bepul rejada server uxlab qolmasligi uchun har 10 daqiqada ping
+# GitHub -> Settings -> Secrets -> Actions: BACKEND_URL = https://xxx.onrender.com
+name: keep-alive
+on:
+  schedule:
+    - cron: '*/10 * * * *'
+  workflow_dispatch:
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - run: curl -fsS "${{ secrets.BACKEND_URL }}/api/health" || true
