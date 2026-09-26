@@ -4,6 +4,7 @@
 require('dotenv').config();
 
 const env = (k, d = '') => (process.env[k] ?? d).toString().trim();
+const httpsOr = (v, d) => (/^https:\/\//i.test(v) ? v : d);
 
 module.exports = {
   port: Number(env('PORT', '5000')),
@@ -16,9 +17,10 @@ module.exports = {
     .map((s) => s.trim())
     .filter(Boolean),
 
-  // Mini App va Admin panel manzillari (Telegram faqat https qabul qiladi)
-  miniappUrl: env('MINIAPP_URL'),
-  adminUrl: env('ADMIN_URL'),
+  // Mini App va Admin panel manzillari (Telegram faqat https qabul qiladi).
+  // Env bo'sh yoki https emas bo'lsa — Vercel'dagi manzillar
+  miniappUrl: httpsOr(env('MINIAPP_URL'), 'https://bravo-miniapp.vercel.app'),
+  adminUrl: httpsOr(env('ADMIN_URL'), 'https://bravo-admin-five.vercel.app'),
   // Backend'ning ochiq https manzili. Bo'sh bo'lsa — bot polling rejimida ishlaydi
   publicUrl: env('PUBLIC_URL') || env('RENDER_EXTERNAL_URL'),
 
