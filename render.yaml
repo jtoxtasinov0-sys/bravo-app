@@ -1,0 +1,51 @@
+# Render Blueprint: Dashboard -> New -> Blueprint -> shu repo'ni tanlang.
+# "sync: false" qiymatlarini Render yaratishda o'zi so'raydi.
+services:
+  - type: web
+    name: bravo-backend
+    runtime: node
+    plan: free
+    region: frankfurt
+    rootDir: backend
+    buildCommand: npm install --include=dev && npx prisma migrate deploy && npm run db:seed
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: NODE_VERSION
+        value: "20"
+      - key: DATABASE_URL
+        sync: false
+      - key: DIRECT_URL
+        sync: false
+      - key: BOT_TOKEN
+        sync: false
+      - key: BOT_USERNAME
+        value: bravo_andijonbot
+      - key: ADMIN_CHAT_IDS
+        sync: false
+      - key: MINIAPP_URL
+        value: https://bravo-miniapp.vercel.app
+      - key: ADMIN_URL
+        value: https://bravo-admin-five.vercel.app
+      - key: ADMIN_USERNAME
+        value: admin
+      - key: ADMIN_PASSWORD
+        sync: false
+      - key: JWT_SECRET
+        generateValue: true
+      - key: COMPANY_PHONE
+        value: "+998937819999"
+      - key: COMPANY_ADDRESS
+        value: Andijon
+      - key: PAYMENT_CARD
+        sync: false
+      - key: PAYMENT_CARD_HOLDER
+        sync: false
+      - key: PAYMENT_CARD_TYPE
+        sync: false
+      - key: CLICK_SERVICE_ID
+        sync: false
+      - key: CLICK_MERCHANT_ID
+        sync: false

@@ -25,7 +25,7 @@ Baza allaqachon tayyor. Render'da ikki manzil kerak:
    - `NODE_VERSION=20`
    - `PUBLIC_URL` — bo'sh (Render `RENDER_EXTERNAL_URL` ni o'zi beradi)
    - `MINIAPP_URL=https://bravo-miniapp.vercel.app` (4-bo'limdan keyin)
-   - `ADMIN_URL=https://bravo-admin.vercel.app` (4-bo'limdan keyin)
+   - `ADMIN_URL=https://bravo-admin-five.vercel.app` (4-bo'limdan keyin)
    - `ADMIN_PASSWORD` va `JWT_SECRET` — **albatta yangi, kuchli** qiymat
 4. Deploy tugagach: `https://xxx.onrender.com/api/health` → `{"ok":true}`.
 
