@@ -1,5 +1,5 @@
 // Admin API: token localStorage'da saqlanadi (30 kun)
-const PROD_API_URL = ''; // zaxira: Vercel'da VITE_API_URL unutilsa shu yerga Render manzilini yozing
+const PROD_API_URL = 'https://bravo-backend.onrender.com'; // zaxira: Render manzili boshqacha bo'lsa — shu yerni yoki VITE_API_URL ni o'zgartiring
 export const API_URL = (import.meta.env.VITE_API_URL || (import.meta.env.PROD ? PROD_API_URL : '') || '').replace(/\/$/, '');
 
 const TOKEN_KEY = 'bravo_admin_token';

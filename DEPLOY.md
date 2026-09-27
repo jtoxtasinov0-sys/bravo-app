@@ -36,11 +36,11 @@ Ikkita alohida loyiha:
 |---|---|---|
 | Root Directory | `miniapp` | `admin` |
 | Framework | Vite | Vite |
-| Environment | `VITE_API_URL=https://xxx.onrender.com` | `VITE_API_URL=https://xxx.onrender.com` va `ADMIN_BASE=/` |
+| Environment | `VITE_API_URL=https://xxx.onrender.com` | `VITE_API_URL=https://xxx.onrender.com` |
 
-> `ADMIN_BASE=/` — admin panel alohida domenda ildizdan ochilishi uchun (lokalda u `/admin/` da ishlaydi).
+> Vercel'da admin panel o'zi ildizdan (`/`) ochiladi, lokalda esa `/admin/` da. `ADMIN_BASE` qo'yish shart emas.
 
-Zaxira: `miniapp/src/lib/api.js` va `admin/src/lib/api.js` dagi `PROD_API_URL` ga ham Render manzilini yozing.
+Zaxira: `VITE_API_URL` unutilsa `https://bravo-backend.onrender.com` ishlatiladi (`PROD_API_URL`). Render manzili boshqacha bo'lsa — `miniapp/src/lib/api.js` va `admin/src/lib/api.js` da o'zgartiring.
 
 Vercel manzillarini Render'dagi `MINIAPP_URL` / `ADMIN_URL` ga yozib, Render'da **Manual Deploy** qiling.
 
