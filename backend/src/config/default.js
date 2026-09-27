@@ -4,7 +4,9 @@
 require('dotenv').config();
 
 const env = (k, d = '') => (process.env[k] ?? d).toString().trim();
-const httpsOr = (v, d) => (/^https:\/\//i.test(v) ? v : d);
+// ngrok manzillari vaqtinchalik — ular hisobga olinmaydi (Render/Vercel manzili ishlatiladi)
+const isNgrok = (v) => /ngrok/i.test(v);
+const httpsOr = (v, d) => (/^https:\/\//i.test(v) && !isNgrok(v) ? v : d);
 
 module.exports = {
   port: Number(env('PORT', '5000')),
@@ -22,7 +24,7 @@ module.exports = {
   miniappUrl: httpsOr(env('MINIAPP_URL'), 'https://bravo-miniapp.vercel.app'),
   adminUrl: httpsOr(env('ADMIN_URL'), 'https://bravo-admin-five.vercel.app'),
   // Backend'ning ochiq https manzili. Bo'sh bo'lsa — bot polling rejimida ishlaydi
-  publicUrl: env('PUBLIC_URL') || env('RENDER_EXTERNAL_URL'),
+  publicUrl: env('RENDER_EXTERNAL_URL') || httpsOr(env('PUBLIC_URL'), ''),
 
   adminUsername: env('ADMIN_USERNAME', 'admin'),
   adminPassword: env('ADMIN_PASSWORD', 'bravo12345'),
